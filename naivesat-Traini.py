@@ -45,7 +45,7 @@ def simplify_formula(F, lit):
 
             if v != -lit: # Si la clause est une variable et n'est pas fausse
                 simplified_cl.append(v) # on rajoute cette variable à la clause
-                
+
             simplified_F.append(simplified_cl) # On la rajoute à la formule
 
     return simplified_F
@@ -64,8 +64,23 @@ def test(F, args):
 ###
 # chercher toutes les solutions
 def all_solutions(F, sol):
-    ...    # TODO
-    return 0
+    """
+        Recherche toutes les solutions possibles
+        ``F`` contient la formule considérée, en FNC (liste de liste de nombres)
+        ``sol`` contient la solution partielle courante (liste de littéraux), avec un 0 en tête
+        utilise le même principe que la fonction ``solve``
+    """
+
+    if not F: # Si F est vide, alors F est satisfiable pour la solution sol
+        print_sol(sol) # On affiche la solution
+        return 1 # On renvoie 1 pour le compteur de solution
+
+    if [] in F: # Si F contient la clause vide, alors F n'est pas satisfiable
+        return 0 # On renvoie 0 pour le compteur de solution
+
+    lit = F[0][0] # On récupère le premier littéral de la première clause
+    # On additionne le nombre de solution pour les 2 valeurs du littéral
+    return all_solutions(simplify_formula(F, lit), sol+[lit]) + all_solutions(simplify_formula(F, -lit), sol+[-lit])
 
 
 ###

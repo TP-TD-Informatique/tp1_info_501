@@ -48,3 +48,31 @@ après : [[-3, 4], [2, -4]]
 2. Pour trouver d'autres solutions, on empèche la première trouvée en ajoutant 3 clauses `¬a ∧ b ∧ c`. Dans ce cas présent la formule est insatisfiable. On en conclut qu'il n'existe qu'une seule solution pour que la formule de base soit satisfiable.
 
 ---
+
+## Question 3
+
+1. En partant de la fonction `solve`, on peut écrire la fonction `all_solutions` qui affiche toutes les solutions :
+
+```python
+if not F: # Si F est vide, alors F est satisfiable pour la solution sol
+    print_sol(sol) # On affiche la solution
+    return 1 # On renvoie 1 pour le compteur de solution
+
+if [] in F: # Si F contient la clause vide, alors F n'est pas satisfiable
+    return 0 # On renvoie 0 pour le compteur de solution
+
+lit = F[0][0] # On récupère le premier littéral de la première clause
+# On additionne le nombre de solution pour les 2 valeurs du littéral
+return all_solutions(simplify_formula(F, lit), sol+[lit]) + all_solutions(simplify_formula(F, -lit), sol+[-lit])
+```
+
+2. Je renvoie le nombre de solution trouvé en additionnant les résultat renvoyé par les 2 essais, en renvoyant 1 quand satisfiable 0 sinon. Pour la formule `(x1 ∨ ¬x2 ∨ x3) ∧ (¬x1 ∨ ¬x3 ∨ x4) ∧ (x2 ∨ ¬x4)` j'ai :
+
+```
+x1 ~x3 x2
+x1 ~x3 ~x2 ~x4
+x1 x3 x4 x2
+~x1 ~x2 ~x4
+~x1 x2 x3
+SATISFIABLE: 5 solution(s) found
+```
