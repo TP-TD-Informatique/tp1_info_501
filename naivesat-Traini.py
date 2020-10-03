@@ -45,8 +45,7 @@ def simplify_formula(F, lit):
 
             if v != -lit: # Si la clause est une variable et n'est pas fausse
                 simplified_cl.append(v) # on rajoute cette variable à la clause
-
-        if simplified_cl: # Si la clause n'est pas vide
+                
             simplified_F.append(simplified_cl) # On la rajoute à la formule
 
     return simplified_F

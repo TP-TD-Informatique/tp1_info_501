@@ -1,0 +1,9 @@
+~ formule de la question 2
+a ~b
+~b ~c
+~a ~c
+~a ~b c
+a b ~c
+~a
+b
+c
