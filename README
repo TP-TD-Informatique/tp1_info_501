@@ -76,3 +76,10 @@ x1 x3 x4 x2
 ~x1 x2 x3
 SATISFIABLE: 5 solution(s) found
 ```
+
+
+---
+
+## Question 4 (BONUS)
+
+En testant plusieurs fois la satisfiabilité de la formule `(x1 ∨ ¬x2 ∨ x3) ∧ (¬x1 ∨ ¬x3 ∨ x4) ∧ (x2 ∨ ¬x4)` avec l'option `-r`, on remarque que la solution n'est pas la même. On peut expliquer ça du fait que l'algorithme commence par le début de la formule, donc le premier littéral qu'il rencontre détermine le reste de la solution qu'il va trouver.
