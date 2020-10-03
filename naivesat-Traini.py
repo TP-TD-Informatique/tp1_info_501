@@ -35,9 +35,20 @@ def simplify_formula(F, lit):
       - supprime les clauses qui contiennent ``lit`` (elle sont vraies)
       - supprime les littéraux ``-lit`` dans les autres clauses (ce littéral est faux)
     """
-    simplified_F = []
-    for cl in F:
-        ...    # TODO
+    simplified_F = [] # La formule simplifiée que l'on va retourner
+    for cl in F: # Pour chaque clause de la formule
+        simplified_cl = [] # La clause simplifiée à rajouter
+        for v in cl: # Pour chaque variable de la clause
+            if v == lit: # Si la variable est vraie, on vide la clause simplifiée
+                simplified_cl = []
+                break # et on sort de la boucle
+
+            if v != -lit: # Si la clause est une variable et n'est pas fausse
+                simplified_cl.append(v) # on rajoute cette variable à la clause
+
+        if simplified_cl: # Si la clause n'est pas vide
+            simplified_F.append(simplified_cl) # On la rajoute à la formule
+
     return simplified_F
 
 

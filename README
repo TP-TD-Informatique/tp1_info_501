@@ -1,0 +1,43 @@
+# TP1 info501
+# Kevin Traini
+
+---
+
+## Question 1
+
+1. Fonction `simplify_formula` :
+
+```python
+simplified_F = [] # La formule simplifiée que l'on va retourner
+  for cl in F: # Pour chaque clause de la formule
+    simplified_cl = [] # La clause simplifiée à rajouter
+    for v in cl: # Pour chaque variable de la clause
+        if v == lit: # Si la variable est vraie, on vide la clause simplifiée
+            simplified_cl = []
+            break # et on sort de la boucle
+
+        if v != -lit: # Si la clause est une variable et n'est pas fausse
+            simplified_cl.append(v) # on rajoute cette variable à la clause
+
+    if simplified_cl: # Si la clause n'est pas vide
+        simplified_F.append(simplified_cl) # On la rajoute à la formule
+
+return simplified_F
+```
+
+2. Sur la formule `(x1 ∨ ¬x2 ∨ x3) ∧ (¬x1 ∨ ¬x3 ∨ x4) ∧ (x2 ∨ ¬x4)` : Le fichier .sat
+
+```
+x1 ~x2 x3
+~x1 ~x3 x4
+x2 ~x4
+```
+Le résultat
+```shell
+$ ./naivesat-Traini.py test1.sat --test 1
+simplification avec 1
+avant : [[1, -2, 3], [-1, -3, 4], [2, -4]]
+après : [[-3, 4], [2, -4]]
+```
+
+---
