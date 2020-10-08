@@ -134,3 +134,12 @@ print(f"{x} {y} ~{z} {r}")
 print(f"{x} ~{y} {z} {r}")
 print(f"~{x} {y} {z} {r}")
 ```
+
+
+---
+
+## Question 11
+
+1. Le fichier était déjà rempli
+
+2. Le sat-solveur nous renvoie une solution correcte a = 0 et b = 7. Si on utiliser l'option -r pour trouver une autre solution, on a a = 6 et b = 1 qui est aussi valable
