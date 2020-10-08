@@ -11,14 +11,10 @@
 simplified_F = [] # La formule simplifiée que l'on va retourner
 for cl in F: # Pour chaque clause de la formule
     simplified_cl = [] # La clause simplifiée à rajouter
-    for v in cl: # Pour chaque variable de la clause
-        if v == lit: # Si la variable est vraie, on vide la clause simplifiée
-            simplified_cl = []
-            break # et on sort de la boucle
-
-        if v != -lit: # Si la clause est une variable et n'est pas fausse
-            simplified_cl.append(v) # on rajoute cette variable à la clause
-
+    if not lit in cl:
+        for v in cl: # Pour chaque variable de la clause
+            if v != -lit: # Si la clause est une variable et n'est pas fausse, par exemple si lit = 2 et v ne doit pas valoir -2
+                simplified_cl.append(v) # on rajoute cette variable à la clause
         simplified_F.append(simplified_cl) # On la rajoute à la formule
 
 return simplified_F
@@ -45,7 +41,7 @@ après : [[-3, 4], [2, -4]]
 
 1. La formule `(a ∨ ¬b) ∧ (¬b ∨ ¬c) ∧ (¬a ∨ ¬c) ∧ (¬a ∨ ¬b ∨ c) ∧ (a ∨ b ∨ ¬c)` est satisfiable pour les valeurs `a ~b ~c` soit `a = 1, b = c = 0`
 
-2. Pour trouver d'autres solutions, on empèche la première trouvée en ajoutant 3 clauses `¬a ∧ b ∧ c`. Dans ce cas présent la formule est insatisfiable. On en conclut qu'il n'existe qu'une seule solution pour que la formule de base soit satisfiable.
+2. Pour trouver d'autres solutions, on empèche la première trouvée en ajoutant 1 clause `¬a ∨ b ∨ c`. Dans ce cas présent la formule est satisfiable pour la solution `~a ~b ~c` soit `a = b = c = 0`
 
 ---
 
@@ -83,3 +79,34 @@ SATISFIABLE: 5 solution(s) found
 ## Question 4 (BONUS)
 
 En testant plusieurs fois la satisfiabilité de la formule `(x1 ∨ ¬x2 ∨ x3) ∧ (¬x1 ∨ ¬x3 ∨ x4) ∧ (x2 ∨ ¬x4)` avec l'option `-r`, on remarque que la solution n'est pas la même. On peut expliquer ça du fait que l'algorithme commence par le début de la formule, donc le premier littéral qu'il rencontre détermine le reste de la solution qu'il va trouver.
+
+
+---
+
+## Question 6
+
+1. Dans le fichier `cartes-Traini-Martins-Gomes.sat`, on ajoute les contraintes pour les 3 indices, ensuite on ajoute une contrainte pour dire qu'il y a au moins une carte de chaque, une autre contrainte pour dire qu'il y a au plus une carte de chaque. Ces 2 contraintes font qu'il y a une carte de chaque. On ajoute une dernière contrainte qui dit qu'il ne peut y avoir qu'une carte par emplacement.
+Le résultat est l'as de pique en 1, l'as de carreau en 2, l'as de trefle en 3 et l'as de coeur en 4.
+
+
+---
+
+## Question 7
+
+1. L'implication `a ⇒ b` se transforme en `¬a ∨ b`, donc le corps de la fonction implies(a,b) est :
+```python
+check(a)
+check(b)
+for i in range(1, 6):
+    print(f"~E_{i}_{a} E_{i}_{b}")
+```
+La fonction constraints_1() a pour corps
+```python
+for L in things:
+    for a in L:
+        print(f"E_1_{a} E_2_{a} E_3_{a} E_4_{a} E_5_{a}")
+```
+
+2. naivesat nous renvoie comme solution : `~E_1_musicien ~E_2_musicien ~E_3_musicien ~E_4_musicien E_5_musicien E_5_tortue E_1_jaune E_1_jazz ~E_2_jaune ~E_3_jaune ~E_4_jaune ~E_5_jaune ~E_1_hardrock ~E_2_hardrock E_3_hardrock E_3_chat ~E_4_hardrock ~E_5_hardrock ~E_1_bois ~E_2_bois ~E_3_bois E_4_bois E_5_blanche ~E_1_chercheur ~E_2_chercheur E_3_chercheur E_3_brique ~E_4_chercheur ~E_5_chercheur E_1_footballeur E_2_immeuble ~E_2_footballeur ~E_4_footballeur ~E_5_footballeur ~E_1_classique E_2_classique E_1_biere ~E_3_classique ~E_4_classique ~E_5_classique ~E_1_hiphop ~E_2_hiphop ~E_3_hiphop ~E_4_hiphop E_5_hiphop E_5_the E_3_soda E_1_poisson ~E_1_boulanger ~E_2_boulanger ~E_3_boulanger E_4_boulanger E_4_chanson ~E_5_boulanger ~E_1_hamster ~E_3_hamster ~E_4_hamster ~E_5_hamster ~E_1_architecte E_2_architecte E_2_eau ~E_3_architecte ~E_4_architecte ~E_5_architecte E_4_whisky ~E_5_bois E_2_hamster ~E_1_zebre ~E_2_zebre ~E_3_zebre E_4_zebre ~E_1_blanche ~E_2_blanche ~E_3_blanche ~E_4_blanche ~E_1_brique ~E_2_brique ~E_4_brique ~E_5_brique ~E_1_immeuble ~E_3_immeuble ~E_4_immeuble ~E_5_immeuble ~E_1_chat ~E_2_chat ~E_4_chat ~E_5_chat ~E_2_poisson ~E_3_poisson ~E_4_poisson ~E_5_poisson ~E_1_tortue ~E_2_tortue ~E_3_tortue ~E_4_tortue ~E_5_zebre ~E_3_footballeur ~E_2_biere ~E_3_biere ~E_4_biere ~E_5_biere ~E_1_eau ~E_3_eau ~E_4_eau ~E_5_eau ~E_1_soda ~E_2_soda ~E_4_soda ~E_5_soda ~E_1_the ~E_2_the ~E_3_the ~E_4_the ~E_1_whisky ~E_2_whisky ~E_3_whisky ~E_5_whisky ~E_1_chanson ~E_2_chanson ~E_3_chanson ~E_5_chanson ~E_2_jazz ~E_3_jazz ~E_4_jazz ~E_5_jazz`
+
+3. On en conclut que c'est le boulanger dans la maison 4 qui à le zèbre.

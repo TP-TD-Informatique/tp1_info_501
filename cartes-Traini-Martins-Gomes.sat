@@ -1,0 +1,116 @@
+~  En 2, il n'y a ni l'as de trèfle, ni l'as de pique
+~X_2_trefle
+~X_2_pique
+
+~  L'as de trèfle est plus à droite que l'as de carreau
+~X_4_trefle X_1_carreau X_2_carreau X_3_carreau
+~X_3_trefle X_1_carreau X_2_carreau
+~X_2_trefle X_1_carreau
+~X_1_trefle
+
+~  L'as de carreau et l'as de cœur ne sont pas à côté l'un de l'autre
+~X_1_carreau ~X_2_coeur
+~X_2_carreau ~X_1_coeur
+~X_2_carreau ~X_3_coeur
+~X_3_carreau ~X_2_coeur
+~X_3_carreau ~X_4_coeur
+~X_4_carreau ~X_3_coeur
+
+
+~  il y a au moins un as de pique
+X_1_pique X_2_pique X_3_pique X_4_pique
+
+~  il y a au moins un as de trefle
+X_1_trefle X_2_trefle X_3_trefle X_4_trefle
+
+~  il y a au moins un as de carreau
+X_1_carreau X_2_carreau X_3_carreau X_4_carreau
+
+~  il y a au moins un as de coeur
+X_1_coeur X_2_coeur X_3_coeur X_4_coeur
+
+
+~  il y a au plus un as de pique
+~X_1_pique ~X_2_pique
+~X_1_pique ~X_3_pique
+~X_1_pique ~X_4_pique
+~X_2_pique ~X_3_pique
+~X_2_pique ~X_4_pique
+~X_3_pique ~X_4_pique
+
+~  il y a au plus un as de trefle
+~X_1_trefle ~X_2_trefle
+~X_1_trefle ~X_3_trefle
+~X_1_trefle ~X_4_trefle
+~X_2_trefle ~X_3_trefle
+~X_2_trefle ~X_4_trefle
+~X_3_trefle ~X_4_trefle
+
+~  il y a au plus un as de carreau
+~X_1_carreau ~X_2_carreau
+~X_1_carreau ~X_3_carreau
+~X_1_carreau ~X_4_carreau
+~X_2_carreau ~X_3_carreau
+~X_2_carreau ~X_4_carreau
+~X_3_carreau ~X_4_carreau
+
+~  il y a au plus un as de coeur
+~X_1_coeur ~X_2_coeur
+~X_1_coeur ~X_3_coeur
+~X_1_coeur ~X_4_coeur
+~X_2_coeur ~X_3_coeur
+~X_2_coeur ~X_4_coeur
+~X_3_coeur ~X_4_coeur
+
+~  2 cartes ne peuvent pas être au même endroit
+~X_1_pique ~X_1_trefle
+~X_1_pique ~X_1_coeur
+~X_1_pique ~X_1_carreau
+~X_2_pique ~X_2_trefle
+~X_2_pique ~X_2_coeur
+~X_2_pique ~X_2_carreau
+~X_3_pique ~X_3_trefle
+~X_3_pique ~X_3_coeur
+~X_3_pique ~X_3_carreau
+~X_4_pique ~X_4_trefle
+~X_4_pique ~X_4_coeur
+~X_4_pique ~X_4_carreau
+
+~X_1_trefle ~X_1_pique
+~X_1_trefle ~X_1_coeur
+~X_1_trefle ~X_1_carreau
+~X_2_trefle ~X_2_pique
+~X_2_trefle ~X_2_coeur
+~X_2_trefle ~X_2_carreau
+~X_3_trefle ~X_3_pique
+~X_3_trefle ~X_3_coeur
+~X_3_trefle ~X_3_carreau
+~X_4_trefle ~X_4_pique
+~X_4_trefle ~X_4_coeur
+~X_4_trefle ~X_4_carreau
+
+~X_1_coeur ~X_1_trefle
+~X_1_coeur ~X_1_pique
+~X_1_coeur ~X_1_carreau
+~X_2_coeur ~X_2_trefle
+~X_2_coeur ~X_2_pique
+~X_2_coeur ~X_2_carreau
+~X_3_coeur ~X_3_trefle
+~X_3_coeur ~X_3_pique
+~X_3_coeur ~X_3_carreau
+~X_4_coeur ~X_4_trefle
+~X_4_coeur ~X_4_pique
+~X_4_coeur ~X_4_carreau
+
+~X_1_carreau ~X_1_trefle
+~X_1_carreau ~X_1_pique
+~X_1_carreau ~X_1_coeur
+~X_2_carreau ~X_2_trefle
+~X_2_carreau ~X_2_pique
+~X_2_carreau ~X_2_coeur
+~X_3_carreau ~X_3_trefle
+~X_3_carreau ~X_3_pique
+~X_3_carreau ~X_3_coeur
+~X_4_carreau ~X_4_trefle
+~X_4_carreau ~X_4_pique
+~X_4_carreau ~X_4_coeur
