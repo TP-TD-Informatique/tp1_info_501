@@ -11,6 +11,11 @@ def solve(F, sol, bcp=False):
       du TP) permet d'activer l'optimisation de propagation des clauses unitaires
     """
 
+    # boolean constraints propagation
+    if bcp:
+        F,sol2 = BCP(F)
+        sol.extend(sol2)
+
     # si F est vide, il n'y a aucune clause et la formule est satisfaite avec la solution courante
     if not F:
         return sol
@@ -85,8 +90,15 @@ def BCP(F):
     """simplifie la formule avec la propagation des clauses unitaires
     renvoie la formule simplifiée et la liste des littéraux simplifiés"""
     sol = []
-    ...    # TODO
-    return F, sol
+    simplified_F = F
+
+    for cl in F:
+        if len(cl) == 1:
+            lit = cl[0]
+            sol.append(lit)
+            simplified_F = simplify_formula(simplified_F, lit)
+
+    return simplified_F, sol
 
 
 ##############################################################################
