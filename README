@@ -143,3 +143,10 @@ print(f"~{x} {y} {z} {r}")
 1. Le fichier était déjà rempli
 
 2. Le sat-solveur nous renvoie une solution correcte a = 0 et b = 7. Si on utiliser l'option -r pour trouver une autre solution, on a a = 6 et b = 1 qui est aussi valable
+
+
+---
+
+## Question 12
+
+En testant avec 1, on trouve bien 0+1 et 1+0, et en testant avec 2 on trouve bien 0+2, 1+2 et 2+1
