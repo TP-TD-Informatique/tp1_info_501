@@ -2,8 +2,14 @@
 
 
 def xor3(r, x, y, z):
-    # TODO
-    ...
+    print(f"~{x} ~{y} ~{z} {r}")
+    print(f"~{x} ~{y} {z} ~{r}")
+    print(f"~{x} {y} ~{z} ~{r}")
+    print(f"{x} ~{y} ~{z} ~{r}")
+    print(f"{x} {y} {z} ~{r}")
+    print(f"{x} {y} ~{z} {r}")
+    print(f"{x} ~{y} {z} {r}")
+    print(f"~{x} {y} {z} {r}")
 
 
 def carry3(r, x, y, z):
@@ -52,4 +58,3 @@ if __name__ == "__main__":
     for i in range(1, n+1):
         xor3(f"s{i}", f"a{i}", f"b{i}", f"r{i}")
         carry3(f"r{i+1}", f"a{i}", f"b{i}", f"r{i}")
-
